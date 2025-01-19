@@ -8,8 +8,10 @@ const app = express()
 
 app.use(express.json())
 
+const frontendURL = process.env.FRONTEND_URL || 'http://localhost:5173'
+
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: frontendURL
 }))
 
 app.get('/', (req, res) => {
@@ -50,5 +52,5 @@ app.post('/capture', async (req, res) => {
 const port = process.env.PORT;
 
 app.listen(port, () => {
-    console.log(`Listening on port: ${port}`)
+    console.log(`Listening on port: ${port})`)
 })
